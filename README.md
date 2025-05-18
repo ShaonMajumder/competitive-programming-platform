@@ -1,4 +1,4 @@
-## Demo
+## 🚀 Demo
 
 ![Submission Screenshot](screenshots/submission-2025-05-19-04_39_24.png)
 
@@ -103,21 +103,6 @@ A solid test strategy ensures system reliability and developer confidence.
 
 ---
 
-## 🧪 Testing Strategy Rough
-
--   Unit tests for all services (PHPUnit) - Done
-    Integration tests for API + database : database pending
-    Mocked judge service for end-to-end contest simulations : pending
-    Test coverage reports + CI badge : partially done
-
-Integration tests:
-
-Use an in-memory or test database to avoid messing with production data.
-Test both success and failure scenarios.
-Clean up after tests.
-
----
-
 ## 🛡️ Engineering Best Practices
 
 -   ✅ Follows Domain-Driven Design (DDD) — feature-based module separation
@@ -127,7 +112,17 @@ Clean up after tests.
 -   🧪 End-to-end simulation tests ensure contest flows are validated
 -   Docker-based infrastructure mimics production closely
 
-5. Submission Engine
-   Code editor (Monaco) + language selector (C/C++, Java, Python, JS, etc.)
-   Judge queue (RabbitMQ/Redis Queue)
-   Secure sandbox for code execution (Docker-based runner)
+🧠 Development Notes (WIP)
+
+-   🚧 Continuous Deployment (CD) setup pending
+-   ✅ Unit testing for core services
+-   🧹 Static Analysis with PHPStan
+-   🛠️ Integration testing in progress (DB setup ongoing)
+-   Mocked judge service for end-to-end contest simulations : pending
+-   🔄 Judge service simulation partially complete [java,nodejs,go]
+-   📊 Code coverage + badge support (partially done)
+-   Judge queue (RabbitMQ Queue) - currently laravel-queue used
+-   Secure sandbox for code execution (Docker-based runner)
+-   Use an in-memory or test database to avoid messing with production data.
+-   Test both success and failure scenarios.
+-   Clean up after tests in integration tests.
