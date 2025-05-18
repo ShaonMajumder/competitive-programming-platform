@@ -4,8 +4,6 @@
 
 This project uses **GitHub Actions** for automated testing and validation on every push and pull request to the `main` branch.
 
----
-
 ### 🔄 What Happens in CI?
 
 On each push or pull request to `main`:
@@ -22,13 +20,9 @@ On each push or pull request to `main`:
     - **Database migrations are executed**
     - PHPUnit tests run using **your actual MySQL and Redis setup**
 
----
-
 ### 📁 GitHub Actions Workflow File
 
 You can find the configuration file at: .github/workflows/laravel.yml
-
----
 
 ### 💡 Notes
 
