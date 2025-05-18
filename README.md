@@ -2,8 +2,6 @@
 
 ## ✅ Continuous Integration (CI) with GitHub Actions
 
-![Laravel CI](https://github.com/shaonmajumder/laravel-judge-system/actions/workflows/laravel.yml/badge.svg)
-
 This project uses **GitHub Actions** for automated testing and validation on every push and pull request to the `main` branch.
 
 ---
@@ -40,16 +38,15 @@ You can find the configuration file at: .github/workflows/laravel.yml
 
 ---
 
-Recommendation: Use a Docker sandbox or tools like Firejail or isolate via a containerized worker VM, ideally using:
+---
 
-Write unittest
+### 💡 Notes
 
-Domain-Driven Design (DDD) pattern with modules for features.
+-   ✅ **No SQLite is used** — tests run using your real **MySQL** and **Redis** services, just like your production/dev environment.
+-   🧪 **Test failures or code issues automatically fail the workflow**, blocking broken PRs from merging into `main`.
+-   🧹 The environment is isolated and reproducible, ensuring consistency across local and CI runs.
 
-5. Submission Engine
-   Code editor (Monaco) + language selector (C/C++, Java, Python, JS, etc.)
-   Judge queue (RabbitMQ/Redis Queue)
-   Secure sandbox for code execution (Docker-based runner)
+---
 
 ## 🧪 Testing Strategy
 
@@ -57,6 +54,55 @@ Domain-Driven Design (DDD) pattern with modules for features.
     Integration tests for API + database
     Mocked judge service for end-to-end contest simulations
     Test coverage reports + CI badge
+
+## 🧪 Testing Strategy
+
+A solid test strategy ensures system reliability and developer confidence.
+
+### ✅ Unit Testing
+
+-   Written using **PHPUnit**
+-   Covers:
+    -   Core services
+    -   Business logic
+    -   Utility classes
+-   Mocking used where necessary to isolate dependencies
+
+### ✅ Integration Testing
+
+-   Hits real **API endpoints**
+-   Uses **real MySQL & Redis services** (Dockerized)
+-   Verifies actual system behavior including:
+    -   Database transactions
+    -   Queued jobs
+    -   Auth flows
+-   Ensures both **success and failure paths** are tested
+-   Database is reset or migrated cleanly between test runs
+
+### ✅ Judge Simulation
+
+-   End-to-end tests simulate actual code submission flows
+-   The Judge service is mocked or stubbed for test environments
+-   Supports future plug-in of a sandboxed Docker runner for full code evaluation
+
+### ✅ Code Coverage (Planned)
+
+-   PHPUnit coverage reports can be added
+-   GitHub CI badge support via `coverage.php` or `Xdebug`
+
+---
+
+### 🛡️ Best Practices Followed
+
+-   Domain-Driven Design (DDD) pattern with feature-based module separation
+-   CI/CD ready: GitHub Actions config validates every change : CD pending
+-   Docker-based infrastructure mimics production closely
+-   Sandbox recommendation: avoid knowing .env and system params : pending
+
+5. Submission Engine
+   Code editor (Monaco) + language selector (C/C++, Java, Python, JS, etc.)
+   Judge queue (RabbitMQ/Redis Queue)
+   Secure sandbox for code execution (Docker-based runner)
 
 Integration tests:
 
@@ -75,3 +121,30 @@ Use GitHub Actions, GitLab CI, or any platform you prefer.
 Run tests automatically on each push or pull request.
 
 Report results and optionally fail the build on test failures.
+
+## Code Coverage report
+
+XDEBUG_MODE=coverage ./vendor/bin/phpunit --cov
+erage-text
+php artisan test --coverage-html=storage/coverage-report
+if you want to see - https://app.codecov.io/gh/ShaonMajumder/competitive-programming-platform
+
+## 📊 Code Coverage
+
+Coverage reports via PHPUnit + Xdebug
+
+**View the report:**
+
+**Text:**
+
+```bash
+XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text
+```
+
+**HTML:**
+
+```bash
+php artisan test --coverage-html=storage/coverage-report
+```
+
+**Online report:** [Codecov Report](https://app.codecov.io/gh/ShaonMajumder/competitive-programming-platform)

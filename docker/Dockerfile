@@ -20,6 +20,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip
 
 RUN pecl install redis && docker-php-ext-enable redis
+# Install Xdebug compatible with PHP 7.4
+RUN pecl install xdebug-2.9.8 && docker-php-ext-enable xdebug
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
