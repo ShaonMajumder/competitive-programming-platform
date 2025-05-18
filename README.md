@@ -38,6 +38,26 @@ You can find the configuration file at: .github/workflows/laravel.yml
 
 ---
 
+## 📊 Code Coverage
+
+Coverage reports via PHPUnit + Xdebug
+
+**View the report:**
+
+**Text:**
+
+```bash
+XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text
+```
+
+**HTML:**
+
+```bash
+php artisan test --coverage-html=storage/coverage-report
+```
+
+**Online report:** [Codecov Report](https://app.codecov.io/gh/ShaonMajumder/competitive-programming-platform)
+
 ---
 
 ### 💡 Notes
@@ -128,23 +148,3 @@ XDEBUG_MODE=coverage ./vendor/bin/phpunit --cov
 erage-text
 php artisan test --coverage-html=storage/coverage-report
 if you want to see - https://app.codecov.io/gh/ShaonMajumder/competitive-programming-platform
-
-## 📊 Code Coverage
-
-Coverage reports via PHPUnit + Xdebug
-
-**View the report:**
-
-**Text:**
-
-```bash
-XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text
-```
-
-**HTML:**
-
-```bash
-php artisan test --coverage-html=storage/coverage-report
-```
-
-**Online report:** [Codecov Report](https://app.codecov.io/gh/ShaonMajumder/competitive-programming-platform)
