@@ -4,6 +4,10 @@
 
 ![Laravel CI](https://github.com/shaonmajumder/competitive-programming-platform/actions/workflows/laravel.yml/badge.svg)
 
+-   upcoming CI/CD demo
+-   upcoming UX demo
+-   best practices demo
+
 ## ✅ Continuous Integration (CI) with GitHub Actions
 
 This project uses **GitHub Actions** for automated testing and validation on every push and pull request to the `main` branch.
