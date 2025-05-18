@@ -8,6 +8,13 @@
 -   upcoming UX demo
 -   best practices demo
 
+## 🛠️ Submission Engine Overview
+
+-   💻 Code editor: Monaco
+-   🌐 Language support: C/C++, Java, Python, JavaScript, etc.
+-   📩 Judge queue: RabbitMQ / Redis Queue
+-   🧱 Secure sandbox execution: Docker-based (planned)
+
 ## ✅ Continuous Integration (CI) with GitHub Actions
 
 This project uses **GitHub Actions** for automated testing and validation on every push and pull request to the `main` branch.
