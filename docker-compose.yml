@@ -57,12 +57,15 @@ services:
   queue:
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/Dockerfile.queue
     container_name: laravel-queue
     command: php artisan queue:work --sleep=3 --tries=3
     depends_on:
       - redis
       - app
+    volumes:
+      - .:/var/www/html  # Mount whole project
+      - vendor:/var/www/html/vendor # Except vendor
     networks:
       - laravel
 
