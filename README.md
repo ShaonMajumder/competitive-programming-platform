@@ -1,3 +1,7 @@
+## Demo
+
+![Submission Screenshot](screenshots/submission-2025-05-19-04_39_24.png)
+
 ![Laravel CI](https://github.com/shaonmajumder/competitive-programming-platform/actions/workflows/laravel.yml/badge.svg)
 
 ## ✅ Continuous Integration (CI) with GitHub Actions
