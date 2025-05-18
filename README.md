@@ -112,7 +112,7 @@ A solid test strategy ensures system reliability and developer confidence.
 -   🧪 End-to-end simulation tests ensure contest flows are validated
 -   Docker-based infrastructure mimics production closely
 
-🧠 Development Notes (WIP)
+## 🧠 Development Notes (WIP)
 
 -   🚧 Continuous Deployment (CD) setup pending
 -   ✅ Unit testing for core services
