@@ -64,13 +64,6 @@ php artisan test --coverage-html=storage/coverage-report
 
 ## 🧪 Testing Strategy
 
--   Unit tests for all services (PHPUnit) - Done
-    Integration tests for API + database
-    Mocked judge service for end-to-end contest simulations
-    Test coverage reports + CI badge
-
-## 🧪 Testing Strategy
-
 A solid test strategy ensures system reliability and developer confidence.
 
 ### ✅ Unit Testing
@@ -99,10 +92,25 @@ A solid test strategy ensures system reliability and developer confidence.
 -   The Judge service is mocked or stubbed for test environments
 -   Supports future plug-in of a sandboxed Docker runner for full code evaluation
 
-### ✅ Code Coverage (Planned)
+### ✅ Code Coverage (Partially Done)
 
--   PHPUnit coverage reports can be added
+-   PHPUnit coverage reports added
 -   GitHub CI badge support via `coverage.php` or `Xdebug`
+
+---
+
+## 🧪 Testing Strategy Rough
+
+-   Unit tests for all services (PHPUnit) - Done
+    Integration tests for API + database : database pending
+    Mocked judge service for end-to-end contest simulations : pending
+    Test coverage reports + CI badge : partially done
+
+Integration tests:
+
+Use an in-memory or test database to avoid messing with production data.
+Test both success and failure scenarios.
+Clean up after tests.
 
 ---
 
@@ -119,21 +127,3 @@ A solid test strategy ensures system reliability and developer confidence.
    Code editor (Monaco) + language selector (C/C++, Java, Python, JS, etc.)
    Judge queue (RabbitMQ/Redis Queue)
    Secure sandbox for code execution (Docker-based runner)
-
-Integration tests:
-
-Write tests that hit your real API endpoints.
-
-Use an in-memory or test database to avoid messing with production data.
-
-Test both success and failure scenarios.
-
-Clean up after tests.
-
-CI setup:
-
-Use GitHub Actions, GitLab CI, or any platform you prefer.
-
-Run tests automatically on each push or pull request.
-
-Report results and optionally fail the build on test failures.
