@@ -135,10 +135,3 @@ Use GitHub Actions, GitLab CI, or any platform you prefer.
 Run tests automatically on each push or pull request.
 
 Report results and optionally fail the build on test failures.
-
-## Code Coverage report
-
-XDEBUG_MODE=coverage ./vendor/bin/phpunit --cov
-erage-text
-php artisan test --coverage-html=storage/coverage-report
-if you want to see - https://app.codecov.io/gh/ShaonMajumder/competitive-programming-platform
