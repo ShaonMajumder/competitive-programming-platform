@@ -1,3 +1,45 @@
+![Laravel CI](https://github.com/shaonmajumder/competitive-programming-platform/actions/workflows/laravel.yml/badge.svg)
+
+## ✅ Continuous Integration (CI) with GitHub Actions
+
+![Laravel CI](https://github.com/shaonmajumder/laravel-judge-system/actions/workflows/laravel.yml/badge.svg)
+
+This project uses **GitHub Actions** for automated testing and validation on every push and pull request to the `main` branch.
+
+---
+
+### 🔄 What Happens in CI?
+
+On each push or pull request to `main`:
+
+1. **GitHub Actions is triggered automatically.**
+2. The CI workflow sets up:
+    - ✅ PHP 8.0
+    - 🐬 MySQL 5.7 (via Docker service container)
+    - 🚀 Redis (via Docker service container)
+3. Steps executed:
+    - Composer dependencies installed
+    - Laravel application key generated
+    - Storage and cache directories made writable
+    - **Database migrations are executed**
+    - PHPUnit tests run using **your actual MySQL and Redis setup**
+
+---
+
+### 📁 GitHub Actions Workflow File
+
+You can find the configuration file at: .github/workflows/laravel.yml
+
+---
+
+### 💡 Notes
+
+-   ✅ **No SQLite is used** — tests run using your real **MySQL** and **Redis** services, just like your production/dev environment.
+-   🧪 **Test failures or code issues automatically fail the workflow**, blocking broken PRs from merging into `main`.
+-   🧹 The environment is isolated and reproducible, ensuring consistency across local and CI runs.
+
+---
+
 Recommendation: Use a Docker sandbox or tools like Firejail or isolate via a containerized worker VM, ideally using:
 
 Write unittest
