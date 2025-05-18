@@ -39,12 +39,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up PHP
+    - name: Set up PHP 7.4 with Xdebug 2
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.0'
+        php-version: '7.4'
         extensions: mbstring, bcmath, pdo, mysql, redis
         tools: composer
+        coverage: xdebug
 
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -75,7 +76,7 @@ jobs:
         DB_PASSWORD: root
       run: php artisan migrate --force
 
-    - name: Run Tests
+    - name: Run PHPUnit Tests with Coverage
       env:
         DB_CONNECTION: mysql
         DB_HOST: 127.0.0.1
@@ -84,4 +85,10 @@ jobs:
         DB_USERNAME: shaon
         DB_PASSWORD: root
         REDIS_HOST: 127.0.0.1
-      run: php artisan test
+      run: vendor/bin/phpunit --coverage-clover=coverage.xml
+
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        files: coverage.xml
+        fail_ci_if_error: true
