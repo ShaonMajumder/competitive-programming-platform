@@ -106,12 +106,14 @@ A solid test strategy ensures system reliability and developer confidence.
 
 ---
 
-### 🛡️ Best Practices Followed
+## 🛡️ Engineering Best Practices
 
--   Domain-Driven Design (DDD) pattern with feature-based module separation
--   CI/CD ready: GitHub Actions config validates every change : CD pending
+-   ✅ Follows Domain-Driven Design (DDD) — feature-based module separation
+-   ✅ CI-ready with GitHub Actions integration (works with every push) : CD pending
+-   ✅ Uses Dockerized services to reflect production setup
+-   🔒 Plans to integrate secure sandbox execution (Docker-based)
+-   🧪 End-to-end simulation tests ensure contest flows are validated
 -   Docker-based infrastructure mimics production closely
--   Sandbox recommendation: avoid knowing .env and system params : pending
 
 5. Submission Engine
    Code editor (Monaco) + language selector (C/C++, Java, Python, JS, etc.)
