@@ -3,9 +3,7 @@
 ![Laravel CI](https://github.com/ShaonMajumder/competitive-programming-platform/actions/workflows/laravel.yml/badge.svg)
 [![codecov](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform/branch/main/graph/badge.svg)](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform)
 
--   upcoming CD demo
--   upcoming UX demo
--   best practices demo
+A full-featured platform for compiling, executing, and judging code submissions across multiple languages — ideal for coding contests or training environments.
 
 ## 🛠️ Submission Engine Overview
 
@@ -101,7 +99,9 @@ php artisan test --coverage-html=storage/coverage-report
 
 ## 🧠 Development Notes (WIP)
 
--   🚧 Continuous Deployment (CD) setup pending
+-   🚧 Continuous Deployment (CD) setup pending & Demo gif
+-   upcoming UX demo
+-   best practices demo
 -   ✅ Unit testing for core services
 -   🧹 Static Analysis with PHPStan
 -   🛠️ Integration testing in progress (DB setup ongoing)
