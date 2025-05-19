@@ -29,31 +29,10 @@ A full-featured platform for compiling, executing, and judging code submissions 
     Write and test code directly in the browser using a modern **Monaco Editor** (used by VS Code).
 
 -   **🌐 Multi-Language Support**  
-    Submit code in popular languages like **C++, Java, Python, JavaScript**, and more (extensible).
+    Submit code in popular languages like **C++, Python**, and more (extensible).
 
 -   **⚙️ Real-Time Code Evaluation**  
     Get instant feedback on submissions — outputs, errors, and verdicts are displayed in real-time.
-
--   **📊 Detailed Submission Reports**  
-    Each submission shows **runtime**, **memory usage**, **compile output**, and **verdict (AC/WA/TLE/RE)**.
-
--   **🕓 Submission History**  
-    Track your progress with **timestamps, results, and code versioning** per problem.
-
--   **🔁 Multiple Test Cases Support**  
-    Judge handles **batch execution** of multiple input/output pairs efficiently.
-
--   **📥 Input/Output Console**  
-    View raw inputs and outputs, making it easier to debug and improve your code.
-
--   **🔒 Secure Execution (Planned)**  
-    User code will run inside isolated **Docker sandboxes** to ensure security and performance.
-
--   **📈 Future Additions (Planned)**
-    -   Leaderboards and rankings
-    -   Problem-solving analytics
-    -   Contest scheduling and participation
-    -   Profile and badge system
 
 ---
 
@@ -149,6 +128,18 @@ php artisan test --coverage-html=storage/coverage-report
 -   Use an in-memory or test database to avoid messing with production data.
 -   Test both success and failure scenarios.
 -   Clean up after tests in integration tests.
+-   **🔁 Multiple Test Cases Support** - Judge handles **batch execution** of multiple input/output pairs efficiently.
+-   **📥 Input/Output Console** - View raw inputs and outputs, making it easier to debug and improve your code.
+-   **📊 Detailed Submission Reports** - Each submission shows **runtime**, **memory usage**, **compile output**, and **verdict (AC/WA/TLE/RE)**.
+-   **🔒 Secure Execution (Planned)**  
+    User code will run inside isolated **Docker sandboxes** to ensure security and performance.
+-   **🕓 Submission History** - Track your progress with **timestamps, results, and code versioning** per problem.
+
+-   **📈 Future Additions (Planned)**
+    -   Leaderboards and rankings
+    -   Problem-solving analytics
+    -   Contest scheduling and participation
+    -   Profile and badge system
 
 ## 👨‍💻 Built & Maintained By
 
