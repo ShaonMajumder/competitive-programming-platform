@@ -131,7 +131,6 @@ Engineering Best Practices followed on this System Design & Architecture.
 -   🔄 Judge service simulation partially complete [java,nodejs,go]
 -   📊 Code coverage + badge support (partially done)
 -   Judge queue (RabbitMQ Queue) - currently laravel-queue used
--   Secure sandbox for code execution (Docker-based runner)
 -   Use an in-memory or test database to avoid messing with production data.
 -   Test both success and failure scenarios.
 -   Clean up after tests in integration tests.

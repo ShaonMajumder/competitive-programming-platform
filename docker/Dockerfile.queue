@@ -67,6 +67,7 @@ RUN if [ -f artisan ]; then \
     echo "Laravel not found. Skipping permissions and key generation."; \
     fi
 
+COPY ./docker/firejail/judge.profile /etc/firejail/judge.profile
 COPY ./docker/startup.sh /usr/local/bin/startup.sh
 # Convert line endings to Unix format, fix for windows
 RUN dos2unix /usr/local/bin/startup.sh

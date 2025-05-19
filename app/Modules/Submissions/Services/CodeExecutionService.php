@@ -35,7 +35,7 @@ class CodeExecutionService
                 }
 
                 $cmd = sprintf(
-                    'timeout %ds firejail --quiet --private --net=none --rlimit-as=%d --rlimit-cpu=%d %s 2>&1',
+                    'timeout %ds firejail --quiet --profile=/etc/firejail/judge.profile --rlimit-as=%d --rlimit-cpu=%d %s 2>&1',
                     $timeLimit,
                     $memoryLimitBytes,
                     $cpuLimit,
@@ -48,7 +48,7 @@ class CodeExecutionService
 
             case 'python':
                 $cmd = sprintf(
-                    'timeout %ds firejail --quiet --private --net=none --rlimit-as=%d --rlimit-cpu=%d python3 %s 2>&1',
+                    'timeout %ds firejail --quiet --profile=/etc/firejail/judge.profile --rlimit-as=%d --rlimit-cpu=%d python3 %s 2>&1',
                     $timeLimit,
                     $memoryLimitBytes,
                     $cpuLimit,
