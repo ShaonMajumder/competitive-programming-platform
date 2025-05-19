@@ -26,27 +26,14 @@ This project uses **GitHub Actions** for automated testing and validation on eve
 
 ### 🔄 What Happens in CI?
 
-On each push or pull request to `main`:
+On each push or pull request to `main` **GitHub Actions** is triggered the following:
 
-1. **GitHub Actions is triggered automatically.**
-2. The CI workflow sets up: PHP 8.0, MySQL 5.7, Redis (via Docker service container)
-3. Executes: Installs composer dependencies, sets app key & directory permissions, runs db migrations, then phpunit tests with MySQL & Redis.
+1. Sets up PHP 7.4, MySQL 5.7, Redis (Docker services)
+2. Executes: Installs composer dependencies, sets app key & directory permissions, runs db migrations, then phpunit tests with MySQL & Redis.
+3. **Test failures or code issues automatically fail the workflow**, blocking broken PRs from merging into `main`.
+4. The environment is isolated and reproducible, ensuring consistency across local and CI runs.
 
-You can find the configuration file at: .github/workflows/laravel.yml
-
-### 💡 Notes
-
--   ✅ **No SQLite is used** — tests run using your real **MySQL** and **Redis** services, just like your production/dev environment.
--   🧪 **Test failures or code issues automatically fail the workflow**, blocking broken PRs from merging into `main`.
--   🧹 The environment is isolated and reproducible, ensuring consistency across local and CI runs.
-
----
-
-### 💡 Notes
-
--   ✅ **No SQLite is used** — tests run using your real **MySQL** and **Redis** services, just like your production/dev environment.
--   🧪 **Test failures or code issues automatically fail the workflow**, blocking broken PRs from merging into `main`.
--   🧹 The environment is isolated and reproducible, ensuring consistency across local and CI runs.
+➡️ Config: .github/workflows/laravel.yml
 
 ---
 
