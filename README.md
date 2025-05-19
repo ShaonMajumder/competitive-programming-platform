@@ -19,10 +19,8 @@
 
 ## ✅ Continuous Integration (CI) with GitHub Actions
 
-<figure>
-  <img src="screenshots/ci_2025-05-19%2012-25-57.gif" alt="CI Demo" width="720">
-  <figcaption><strong>Figure:</strong> GitHub Actions running PHPUnit tests with MySQL & Redis services.</figcaption>
-</figure>
+**Figure:** GitHub Actions running PHPUnit tests
+![CI Demo](screenshots/ci_2025-05-19%2012-25-57.gif)
 
 This project uses **GitHub Actions** for automated testing and validation on every push and pull request to the `main` branch.
 
