@@ -45,10 +45,8 @@ A full-featured platform for compiling, executing, and judging code submissions 
 | **Queue System** | Redis Queue (RabbitMQ planned)                   |
 | **Database**     | MySQL                                            |
 | **Testing**      | PHPUnit (Unit & Integration), Codecov, GitHub CI |
-| **Sandboxing**   | Docker-based (Secure Code Execution - Planned)   |
+| **Sandboxing**   | firejail-based (Secure Code Execution)           |
 | **CI/CD**        | GitHub Actions (CI Done, CD Planned)             |
-
----
 
 ## 🧪 Testing Strategy
 
@@ -103,15 +101,21 @@ php artisan test --coverage-html=storage/coverage-report
 
 ---
 
-## 🛡️ Why It Stands Out - Engineering Best Practices
+## System Design & Architecture
 
--   ✅ Follows Domain-Driven Design (DDD) — feature-based module separation
--   ✅ Real-time system with asynchronous processing - Scalable queue-based design
--   Language Resource limits to prevent abuse & balance load (CPU/memory/time limits)
+-   Limiting Resource (CPU/memory/time limits) based on Language : preventing abuse & maximizing con-current user request
+-   ✅ Follows Domain-Driven Design (DDD) — feature-based module separation for enabling/disabling services, or subscription model
+-   ✅ Real-time system with asynchronous processing by queue : accepting request from mass users at once, but execute one by one, enabling non-blocking users service
+-   🔒 Sandboxing : Preventing sucspicious code to run
 -   ✅ Uses Dockerized services to reflect production setup
--   ✅ CI/CD built-in from the ground up
--   🔒 Plans to integrate secure sandbox execution (Docker-based)
+-   ✅ CI/CD built-in from day 1
 -   🧪 End-to-end simulation tests ensure contest flows are validated
+
+As, main goal of this design is - **Scalability**
+
+## 🛡️ Why it Stands Out -
+
+Engineering Best Practices followed on this System Design & Architecture.
 
 ## 🧠 Development Notes (WIP)
 
