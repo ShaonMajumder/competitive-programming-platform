@@ -13,7 +13,7 @@
 ## 🛠️ Submission Engine Overview
 
 **Figure:** C++, python code submission
-![CI Demo](screenshots/cp_2025-05-19 12-25-57.gif)
+![CI Demo](screenshots/cp_2025-05-19%2012-25-57.gif)
 
 -   💻 Code editor: Monaco
 -   🌐 Language support: C/C++, Java, Python, JavaScript, etc.
