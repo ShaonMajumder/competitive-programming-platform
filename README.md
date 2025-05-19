@@ -22,6 +22,7 @@ A full-featured platform for compiling, executing, and judging code submissions 
 ![CI Demo](screenshots/ci_2025-05-19%2012-25-57.gif)
 
 🔄 On each push/PR to main, GitHub Actions sets up PHP, MySQL, Redis, installs dependencies, configures Laravel, runs migrations & PHPUnit tests—failing on issues to block broken PRs.
+
 ➡️ Config: .github/workflows/laravel.yml
 
 ---
