@@ -1,9 +1,6 @@
 ## 🚀 Demo
 
-![Submission Screenshot](screenshots/submission-2025-05-19-04_39_24.png)
-
 ![Laravel CI](https://github.com/ShaonMajumder/competitive-programming-platform/actions/workflows/laravel.yml/badge.svg)
-
 [![codecov](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform/branch/main/graph/badge.svg)](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform)
 
 -   upcoming CD demo
