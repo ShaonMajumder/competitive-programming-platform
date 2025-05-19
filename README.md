@@ -5,18 +5,14 @@
 
 A full-featured platform for compiling, executing, and judging code submissions across multiple languages — ideal for coding contests or training environments.
 
-### 🎯 What This Platform Offers
+## 🚀 Demo
 
--   Submission & Evaluation Engine: Code is submitted to a backend judge system via a queue, where it is compiled and executed.
--   Live contest simulation: Ideal for timed competitions and learning environments.
--   Scalable backend: Designed with future growth and sandbox security in mind.
-
-## 🛠️ Submission Engine Overview
+### 🛠️ Submission Engine Overview
 
 **Figure:** running C++, python code
 ![CI Demo](screenshots/cp_2025-05-19%2012-25-57.gif)
 
-## ✅ Continuous Integration (CI) with GitHub Actions
+### ✅ Continuous Integration (CI) with GitHub Actions
 
 **Figure:** GitHub Actions running PHPUnit tests, when pushed to main branch
 ![CI Demo](screenshots/ci_2025-05-19%2012-25-57.gif)
@@ -24,6 +20,40 @@ A full-featured platform for compiling, executing, and judging code submissions 
 🔄 On each push/PR to main, GitHub Actions sets up PHP, MySQL, Redis, installs dependencies, configures Laravel, runs migrations & PHPUnit tests—failing on issues to block broken PRs.
 
 ➡️ Config: .github/workflows/laravel.yml
+
+---
+
+## 🎯 Features for Users
+
+-   **📝 Online Code Editor**  
+    Write and test code directly in the browser using a modern **Monaco Editor** (used by VS Code).
+
+-   **🌐 Multi-Language Support**  
+    Submit code in popular languages like **C++, Java, Python, JavaScript**, and more (extensible).
+
+-   **⚙️ Real-Time Code Evaluation**  
+    Get instant feedback on submissions — outputs, errors, and verdicts are displayed in real-time.
+
+-   **📊 Detailed Submission Reports**  
+    Each submission shows **runtime**, **memory usage**, **compile output**, and **verdict (AC/WA/TLE/RE)**.
+
+-   **🕓 Submission History**  
+    Track your progress with **timestamps, results, and code versioning** per problem.
+
+-   **🔁 Multiple Test Cases Support**  
+    Judge handles **batch execution** of multiple input/output pairs efficiently.
+
+-   **📥 Input/Output Console**  
+    View raw inputs and outputs, making it easier to debug and improve your code.
+
+-   **🔒 Secure Execution (Planned)**  
+    User code will run inside isolated **Docker sandboxes** to ensure security and performance.
+
+-   **📈 Future Additions (Planned)**
+    -   Leaderboards and rankings
+    -   Problem-solving analytics
+    -   Contest scheduling and participation
+    -   Profile and badge system
 
 ---
 
