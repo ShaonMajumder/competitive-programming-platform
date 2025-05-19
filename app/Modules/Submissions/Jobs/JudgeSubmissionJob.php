@@ -43,7 +43,7 @@ class JudgeSubmissionJob implements ShouldQueue
 
         
         $submission->update(['status' => SubmissionStatus::RUNNING]);
-        $this->cacheStatus(SubmissionStatus::RUNNING);
+        $this->cacheStatus(SubmissionStatus::label(SubmissionStatus::RUNNING));
         Log::info("Submission ID {$this->submissionId} marked as RUNNING.");
 
         $language = $submission->language;
@@ -57,8 +57,7 @@ class JudgeSubmissionJob implements ShouldQueue
         try {
             $limits = $this->configService->getLimits($language);
             Log::info("Execution limits: " . json_encode($limits));
-            $result = $this->executor->execute($language, $sourcePath, $submission->id, $limits );
-            $limitsJson = json_encode($limits);
+            $result = $this->executor->execute($language, $sourcePath, $submission->id, $limits);
             Log::info("Execution result for submission ID {$this->submissionId}: status={$result['status']}");
 
             $submission->update([
@@ -67,7 +66,7 @@ class JudgeSubmissionJob implements ShouldQueue
                 'error'  => $result['error'],
             ]);
 
-            $this->cacheStatus($result['status'], $result['output'], $result['error'], $limitsJson);
+            $this->cacheStatus( SubmissionStatus::label($result['status']), $result['output'], $result['error'], $limits);
         } catch (Throwable $e) {
             $message = "Internal error: " . $e->getMessage();
             Log::error("Exception in judging submission ID {$this->submissionId}: " . $e->__toString());
@@ -78,7 +77,7 @@ class JudgeSubmissionJob implements ShouldQueue
                 'error'  => $message,
             ]);
 
-            $this->cacheStatus(SubmissionStatus::FAILED, '', $message);
+            $this->cacheStatus(SubmissionStatus::label(SubmissionStatus::FAILED), '', $message);
         } finally {
             @unlink($sourcePath);
             Log::info("Source code file deleted: {$sourcePath}");
@@ -105,7 +104,7 @@ class JudgeSubmissionJob implements ShouldQueue
         }
     }
 
-    protected function cacheStatus(string $status, ?string $output = null, ?string $error = null, ?string $limits = null): void
+    protected function cacheStatus(string $status, ?string $output = null, ?string $error = null, ?array $limits = null): void
     {
         Redis::setex("submission_status_{$this->submissionId}", 3600, json_encode([
             'status' => $status,

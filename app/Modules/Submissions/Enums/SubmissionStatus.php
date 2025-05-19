@@ -12,6 +12,7 @@ final class SubmissionStatus
     public const RUNTIME_ERROR = 5;
     public const COMPILATION_ERROR = 6;
     public const FAILED = 7;
+    public const EXECUTED = 8;
 
     private static array $labels = [
         self::QUEUED => 'Queued',
@@ -22,6 +23,7 @@ final class SubmissionStatus
         self::RUNTIME_ERROR => 'Runtime Error',
         self::COMPILATION_ERROR => 'Compilation Error',
         self::FAILED => 'Failed',
+        self::EXECUTED => 'Executed',
     ];
 
     /**

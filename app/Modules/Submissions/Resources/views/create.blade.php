@@ -45,7 +45,7 @@
             <div id="loading" class="hidden bg-yellow-100 text-yellow-800 px-4 py-2 text-sm text-center">Running...</div>
 
             <!-- Result Output -->
-            <div id="result" class="hidden bg-black text-green-400 font-mono text-sm p-4 h-32 overflow-auto whitespace-pre-wrap"></div>
+            <div id="result" class="hidden bg-black text-green-400 font-mono text-sm p-4 pb-8 h-32 overflow-auto whitespace-pre-wrap"></div>
         </form>
     </section>
 
@@ -133,8 +133,12 @@ document.getElementById('submission-form').addEventListener('submit', async func
         if (statusData.status === 'Queued' || statusData.status === 'Running') {
             setTimeout(pollStatus, 2000);
         } else {
+            const output = statusData.output || 'No output.';
+            const limits = statusData.limits || {};
+            const limitsText = `\n\n=== Resource Limits ===\nCPU Limit: ${limits.cpu_limit}\nMemory Limit: ${limits.memory_limit}\nTime Limit: ${limits.time_limit_seconds}s`;
+            
             loading.classList.add('hidden');
-            resultDiv.textContent = statusData.output || 'No output.';
+            resultDiv.textContent = output + limitsText || 'No output.';
             resultDiv.classList.remove('hidden');
         }
     }

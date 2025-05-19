@@ -70,7 +70,7 @@ class CodeExecutionService
         if ($exitCode === 0) {
             Log::info("Execution succeeded for submission ID {$submissionId}");
             return [
-                'status' => SubmissionStatus::ACCEPTED,
+                'status' => SubmissionStatus::EXECUTED,
                 'output' => implode("\n", $output),
                 'error' => null,
                 'limits' => compact('cpuLimit', 'memoryLimit', 'timeLimit')
