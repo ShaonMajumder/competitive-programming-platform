@@ -29,18 +29,8 @@ This project uses **GitHub Actions** for automated testing and validation on eve
 On each push or pull request to `main`:
 
 1. **GitHub Actions is triggered automatically.**
-2. The CI workflow sets up:
-    - ✅ PHP 8.0
-    - 🐬 MySQL 5.7 (via Docker service container)
-    - 🚀 Redis (via Docker service container)
-3. Steps executed:
-    - Composer dependencies installed
-    - Laravel application key generated
-    - Storage and cache directories made writable
-    - **Database migrations are executed**
-    - PHPUnit tests run using **your actual MySQL and Redis setup**
-
-### 📁 GitHub Actions Workflow File
+2. The CI workflow sets up: PHP 8.0, MySQL 5.7, Redis (via Docker service container)
+3. Executes: Installs composer dependencies, sets app key & directory permissions, runs db migrations, then phpunit tests with MySQL & Redis.
 
 You can find the configuration file at: .github/workflows/laravel.yml
 
