@@ -42,6 +42,20 @@ On each push or pull request to `main` **GitHub Actions** triggers the following
 
 ---
 
+## 🧰 Tech Stack
+
+| Area             | Technologies Used                                |
+| ---------------- | ------------------------------------------------ |
+| **Frontend**     | ReactJS, Monaco Editor                           |
+| **Backend**      | Laravel (PHP), RESTful APIs                      |
+| **Queue System** | Redis Queue (RabbitMQ planned)                   |
+| **Database**     | MySQL                                            |
+| **Testing**      | PHPUnit (Unit & Integration), Codecov, GitHub CI |
+| **Sandboxing**   | Docker-based (Secure Code Execution - Planned)   |
+| **CI/CD**        | GitHub Actions (CI Done, CD Planned)             |
+
+---
+
 ## 🧪 Testing Strategy
 
 A solid test strategy ensures system reliability and developer confidence.
@@ -120,3 +134,10 @@ php artisan test --coverage-html=storage/coverage-report
 -   Use an in-memory or test database to avoid messing with production data.
 -   Test both success and failure scenarios.
 -   Clean up after tests in integration tests.
+
+## 👨‍💻 Built & Maintained By
+
+**Shaon Majumder**  
+Senior Software Engineer  
+Open source contributor | Laravel ecosystem expert | System design advocate  
+🔗 [LinkedIn](https://linkedin.com/in/shaonmajumder) • [Portfolio](https://github.com/ShaonMajumder)
