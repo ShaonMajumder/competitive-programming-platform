@@ -2,6 +2,9 @@
 
 ![Submission Screenshot](screenshots/submission-2025-05-19-04_39_24.png)
 
+![Tests](https://github.com/ShaonMajumder/competitive-programming-platform/actions/workflows/tests.yml/badge.svg)
+[![codecov](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform/branch/main/graph/badge.svg)](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform)
+
 ![Laravel CI](https://github.com/shaonmajumder/competitive-programming-platform/actions/workflows/laravel.yml/badge.svg)
 
 -   upcoming CI/CD demo
@@ -47,28 +50,6 @@ You can find the configuration file at: .github/workflows/laravel.yml
 
 ---
 
-## 📊 Code Coverage
-
-Coverage reports via PHPUnit + Xdebug
-
-**View the report:**
-
-**Text:**
-
-```bash
-XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text
-```
-
-**HTML:**
-
-```bash
-php artisan test --coverage-html=storage/coverage-report
-```
-
-**Online report:** [Codecov Report](https://app.codecov.io/gh/ShaonMajumder/competitive-programming-platform)
-
----
-
 ### 💡 Notes
 
 -   ✅ **No SQLite is used** — tests run using your real **MySQL** and **Redis** services, just like your production/dev environment.
@@ -107,10 +88,26 @@ A solid test strategy ensures system reliability and developer confidence.
 -   The Judge service is mocked or stubbed for test environments
 -   Supports future plug-in of a sandboxed Docker runner for full code evaluation
 
-### ✅ Code Coverage (Partially Done)
+### 📊 Code Coverage (Partially Done)
 
--   PHPUnit coverage reports added
--   GitHub CI badge support via `coverage.php` or `Xdebug`
+GitHub CI badge support via `coverage.php` or `Xdebug`
+Coverage reports via PHPUnit + Xdebug
+
+**View the report:**
+
+**Text:**
+
+```bash
+XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text
+```
+
+**HTML:**
+
+```bash
+php artisan test --coverage-html=storage/coverage-report
+```
+
+**Online report:** [Codecov Report](https://app.codecov.io/gh/ShaonMajumder/competitive-programming-platform)
 
 ---
 

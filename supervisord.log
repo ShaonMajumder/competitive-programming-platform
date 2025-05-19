@@ -277,3 +277,24 @@
 2025-05-18 22:04:29,166 INFO reaped unknown pid 5672 (exit status 0)
 2025-05-18 22:06:23,295 INFO reaped unknown pid 5683 (exit status 0)
 2025-05-18 22:06:46,323 INFO reaped unknown pid 5694 (exit status 0)
+2025-05-19 05:11:47,965 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-05-19 05:11:47,987 INFO supervisord started with pid 1
+2025-05-19 05:11:48,993 INFO spawned: 'nginx' with pid 9
+2025-05-19 05:11:49,002 INFO spawned: 'php-fpm' with pid 10
+2025-05-19 05:11:49,025 INFO spawned: 'queue' with pid 11
+2025-05-19 05:11:50,650 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-05-19 05:11:50,651 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-05-19 05:11:50,651 INFO success: queue entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-05-19 05:12:18,683 WARN received SIGQUIT indicating exit request
+2025-05-19 05:12:18,683 INFO waiting for nginx, php-fpm, queue to die
+2025-05-19 05:12:19,687 INFO stopped: queue (exit status 0)
+2025-05-19 05:12:19,691 INFO stopped: php-fpm (exit status 0)
+2025-05-19 05:12:19,708 INFO stopped: nginx (exit status 0)
+2025-05-19 05:12:21,521 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-05-19 05:12:21,524 INFO supervisord started with pid 1
+2025-05-19 05:12:22,526 INFO spawned: 'nginx' with pid 9
+2025-05-19 05:12:22,528 INFO spawned: 'php-fpm' with pid 10
+2025-05-19 05:12:22,529 INFO spawned: 'queue' with pid 11
+2025-05-19 05:12:23,556 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-05-19 05:12:23,557 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-05-19 05:12:23,557 INFO success: queue entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
