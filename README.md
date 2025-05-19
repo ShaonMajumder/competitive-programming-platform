@@ -7,7 +7,6 @@ A full-featured platform for compiling, executing, and judging code submissions 
 
 ### 🎯 What This Platform Offers
 
--   Real-time code execution: Users can write and run code in multiple languages (C++, Java, Python, etc.) using a built-in editor.
 -   Submission & Evaluation Engine: Code is submitted to a backend judge system via a queue, where it is compiled and executed.
 -   Live contest simulation: Ideal for timed competitions and learning environments.
 -   Scalable backend: Designed with future growth and sandbox security in mind.
@@ -16,11 +15,6 @@ A full-featured platform for compiling, executing, and judging code submissions 
 
 **Figure:** running C++, python code
 ![CI Demo](screenshots/cp_2025-05-19%2012-25-57.gif)
-
--   💻 Code editor: Monaco
--   🌐 Language support: C/C++, Java, Python, JavaScript, etc.
--   📩 Judge queue: RabbitMQ / Redis Queue
--   🧱 Secure sandbox execution: Docker-based (planned)
 
 ## ✅ Continuous Integration (CI) with GitHub Actions
 
