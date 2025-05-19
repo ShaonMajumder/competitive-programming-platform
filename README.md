@@ -21,17 +21,7 @@ A full-featured platform for compiling, executing, and judging code submissions 
 **Figure:** GitHub Actions running PHPUnit tests, when pushed to main branch
 ![CI Demo](screenshots/ci_2025-05-19%2012-25-57.gif)
 
-This project uses **GitHub Actions** for automated testing and validation on every push and pull request to the `main` branch.
-
-### 🔄 What Happens in CI?
-
-On each push or pull request to `main` **GitHub Actions** triggers the following:
-
-1. Sets up PHP 7.4, MySQL 5.7, Redis (Docker services)
-2. Executes: Installs composer dependencies, sets app key & directory permissions, runs db migrations, then phpunit tests with MySQL & Redis.
-3. **Test failures or code issues automatically fail the workflow**, blocking broken PRs from merging into `main`.
-4. The environment is isolated and reproducible, ensuring consistency across local and CI runs.
-
+🔄 On each push/PR to main, GitHub Actions sets up PHP, MySQL, Redis, installs dependencies, configures Laravel, runs migrations & PHPUnit tests—failing on issues to block broken PRs.
 ➡️ Config: .github/workflows/laravel.yml
 
 ---
