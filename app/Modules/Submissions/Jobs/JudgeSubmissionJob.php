@@ -39,6 +39,7 @@ class JudgeSubmissionJob implements ShouldQueue
             return;
         }
 
+        
         $submission->update(['status' => SubmissionStatus::RUNNING]);
         $this->cacheStatus(SubmissionStatus::RUNNING);
         Log::info("Submission ID {$this->submissionId} marked as RUNNING.");
