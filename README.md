@@ -12,7 +12,7 @@
 
 ## 🛠️ Submission Engine Overview
 
-**Figure:** C++, python code submission
+**Figure:** running C++, python code submission
 ![CI Demo](screenshots/cp_2025-05-19%2012-25-57.gif)
 
 -   💻 Code editor: Monaco
