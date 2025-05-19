@@ -26,7 +26,7 @@ This project uses **GitHub Actions** for automated testing and validation on eve
 
 ### 🔄 What Happens in CI?
 
-On each push or pull request to `main` **GitHub Actions** is triggered the following:
+On each push or pull request to `main` **GitHub Actions** triggers the following:
 
 1. Sets up PHP 7.4, MySQL 5.7, Redis (Docker services)
 2. Executes: Installs composer dependencies, sets app key & directory permissions, runs db migrations, then phpunit tests with MySQL & Redis.
