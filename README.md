@@ -1,9 +1,16 @@
-## Competitive Programming Platform
+# Competitive Programming Platform
 
 ![Laravel CI](https://github.com/ShaonMajumder/competitive-programming-platform/actions/workflows/laravel.yml/badge.svg)
 [![codecov](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform/branch/main/graph/badge.svg)](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform)
 
 A full-featured platform for compiling, executing, and judging code submissions across multiple languages — ideal for coding contests or training environments.
+
+### 🎯 What This Platform Offers
+
+-   Real-time code execution: Users can write and run code in multiple languages (C++, Java, Python, etc.) using a built-in editor.
+-   Submission & Evaluation Engine: Code is submitted to a backend judge system via a queue, where it is compiled and executed.
+-   Live contest simulation: Ideal for timed competitions and learning environments.
+-   Scalable backend: Designed with future growth and sandbox security in mind.
 
 ## 🛠️ Submission Engine Overview
 
