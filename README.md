@@ -19,7 +19,7 @@
 
 ## ✅ Continuous Integration (CI) with GitHub Actions
 
-gif image here --
+gif image here -
 
 This project uses **GitHub Actions** for automated testing and validation on every push and pull request to the `main` branch.
 
