@@ -12,7 +12,7 @@ A full-featured platform for compiling, executing, and judging code submissions 
 **Figure:** running C++, python code
 ![CI Demo](screenshots/cp_2025-05-19%2012-25-57.gif)
 
-### ✅ Sandbox
+### 🔒 Sandbox
 
 **Figure:** Sandbox restricting .env and network access
 ![Sandbox Demo](screenshots/sandbox-2025-05-19%2012-25-57.gif)
