@@ -6,11 +6,14 @@
 
 [![codecov](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform/branch/main/graph/badge.svg)](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform)
 
--   upcoming CI/CD demo
+-   upcoming CD demo
 -   upcoming UX demo
 -   best practices demo
 
 ## 🛠️ Submission Engine Overview
+
+**Figure:** C++, python code submission
+![CI Demo](screenshots/cp_2025-05-19 12-25-57.gif)
 
 -   💻 Code editor: Monaco
 -   🌐 Language support: C/C++, Java, Python, JavaScript, etc.
