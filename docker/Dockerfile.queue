@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     g++ \
-    firejail \
+    bubblewrap \
     && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip
 
 RUN pecl install redis && docker-php-ext-enable redis
@@ -68,6 +68,7 @@ RUN if [ -f artisan ]; then \
     fi
 
 COPY ./docker/firejail/judge.profile /etc/firejail/judge.profile
+RUN chown root:root /etc/firejail/judge.profile && chmod 444 /etc/firejail/judge.profile
 COPY ./docker/startup.sh /usr/local/bin/startup.sh
 # Convert line endings to Unix format, fix for windows
 RUN dos2unix /usr/local/bin/startup.sh

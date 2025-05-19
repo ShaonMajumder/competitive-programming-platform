@@ -12,15 +12,16 @@ private-tmp
 private
 
 noexec ${HOME}
-blacklist ${HOME}/.env
-blacklist /var/www/html/.env
-blacklist /var/www/html/.env.example
-blacklist /etc
-blacklist /etc/hosts
-blacklist /var
+blacklist **/.env
+# blacklist ${HOME}/.env
+# blacklist /var/www/html/.env
+# blacklist /var/www/html/.env.example
+# blacklist /etc
+# blacklist /etc/hosts
+# blacklist /var
 
 # Optional: whitelist only working dir
-whitelist /var/www/html
+# whitelist /var/www/html
 
 # Disable common dangerous capabilities
 caps.drop all

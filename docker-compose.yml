@@ -68,6 +68,13 @@ services:
       - vendor:/var/www/html/vendor # Except vendor
     networks:
       - laravel
+    security_opt:
+      - seccomp=unconfined
+      - apparmor=unconfined
+    cap_add:
+      - ALL
+    privileged: true
+    userns_mode: host
 
 volumes:
   dbdata:

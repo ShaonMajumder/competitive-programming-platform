@@ -12,6 +12,11 @@ A full-featured platform for compiling, executing, and judging code submissions 
 **Figure:** running C++, python code
 ![CI Demo](screenshots/cp_2025-05-19%2012-25-57.gif)
 
+### ✅ Sandbox
+
+**Figure:** Sandbox restricting .env and network access
+![Sandbox Demo](screenshots/sandbox-2025-05-19%2012-25-57.gif)
+
 ### ✅ Continuous Integration (CI) with GitHub Actions
 
 **Figure:** GitHub Actions running PHPUnit tests, when pushed to main branch
@@ -105,7 +110,7 @@ php artisan test --coverage-html=storage/coverage-report
 
 > **🎯 Main Goal:** Ensure **Scalability**, **Security**, and **Modularity**  
 > Designed for real-time code evaluation at scale — CI/CD-ready, easily deployable, and structured for maintainability.
-> Every commit makes sure the feature works.
+> Every commit ensures features work reliably and regressions are prevented.
 
 -   🧩 **Domain-Driven Design (DDD)** — feature-based modular structure supports toggling services (e.g., subscription model).
 -   ⚙️ **Resource Limiting per Language** (CPU, Memory, Time) — prevents abuse and maximizing con-current user code execution
@@ -114,6 +119,7 @@ php artisan test --coverage-html=storage/coverage-report
 -   🐳 **Dockerized Environment** — replicates production setup for local development, testing, and deployment.
 -   🚀 **CI/CD from Day 1** — GitHub Actions handles linting, tests, and deployments for continuous integration.
 -   🧪 **End-to-End Testing** — simulates full contest flows to ensure submission-to-verdict accuracy.
+-   ✅ **High Code Coverage & Test Quality** — robust unit, integration, and system tests maintain >90% code coverage, enabling confident refactoring and feature expansion with minimal risk.
 
 ## 🛡️ Why it Stands Out -
 
@@ -140,7 +146,7 @@ Engineering Best Practices followed on this System Design & Architecture.
 -   **🔒 Secure Execution (Planned)**  
     User code will run inside isolated **Docker sandboxes** to ensure security and performance.
 -   **🕓 Submission History** - Track your progress with **timestamps, results, and code versioning** per problem.
-
+-   observability and monitoring (logs, metrics)
 -   **📈 Future Additions (Planned)**
     -   Leaderboards and rankings
     -   Problem-solving analytics

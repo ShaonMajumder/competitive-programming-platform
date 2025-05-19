@@ -47,14 +47,26 @@ class CodeExecutionService
                 break;
 
             case 'python':
+                $workDir = dirname($sourcePath);
+                $fileName = basename($sourcePath);
+            
+                // bwrap command to isolate the script from the Laravel app and .env
                 $cmd = sprintf(
-                    'timeout %ds firejail --quiet --profile=/etc/firejail/judge.profile --rlimit-as=%d --rlimit-cpu=%d python3 %s 2>&1',
+                    'timeout %ds bwrap ' .
+                    '--ro-bind /usr /usr ' .
+                    '--ro-bind /lib /lib ' .
+                    '--ro-bind /lib64 /lib64 ' .
+                    '--ro-bind /bin /bin ' .
+                    '--ro-bind /tmp /tmp ' .
+                    '--dev /dev ' .
+                    '--bind %s /app ' .
+                    '--chdir /app ' .
+                    'python3 %s 2>&1',
                     $timeLimit,
-                    $memoryLimitBytes,
-                    $cpuLimit,
-                    escapeshellarg($sourcePath)
+                    escapeshellarg($workDir),
+                    escapeshellarg($fileName)
                 );
-
+                // $cmd = "python3 $sourcePath 2>&1";
                 exec($cmd, $output, $exitCode);
                 break;
 

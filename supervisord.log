@@ -481,3 +481,24 @@
 2025-05-19 17:57:35,551 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2025-05-19 17:57:35,552 INFO success: queue entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2025-05-19 17:59:21,431 INFO reaped unknown pid 42 (exit status 0)
+2025-05-19 20:42:42,617 WARN received SIGQUIT indicating exit request
+2025-05-19 20:42:42,617 INFO waiting for nginx, php-fpm, queue to die
+2025-05-19 20:42:43,620 INFO stopped: queue (exit status 0)
+2025-05-19 20:42:43,626 INFO stopped: php-fpm (exit status 0)
+2025-05-19 20:42:43,640 INFO stopped: nginx (exit status 0)
+2025-05-19 20:59:31,271 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-05-19 20:59:31,276 INFO supervisord started with pid 1
+2025-05-19 20:59:32,279 INFO spawned: 'nginx' with pid 9
+2025-05-19 20:59:32,280 INFO spawned: 'php-fpm' with pid 10
+2025-05-19 20:59:32,282 INFO spawned: 'queue' with pid 11
+2025-05-19 20:59:33,322 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-05-19 20:59:33,323 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-05-19 20:59:33,323 INFO success: queue entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-05-19 23:24:43,660 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-05-19 23:24:43,665 INFO supervisord started with pid 1
+2025-05-19 23:24:44,666 INFO spawned: 'nginx' with pid 9
+2025-05-19 23:24:44,668 INFO spawned: 'php-fpm' with pid 10
+2025-05-19 23:24:44,670 INFO spawned: 'queue' with pid 11
+2025-05-19 23:24:45,716 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-05-19 23:24:45,716 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-05-19 23:24:45,716 INFO success: queue entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
