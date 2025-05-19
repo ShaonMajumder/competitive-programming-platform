@@ -103,15 +103,17 @@ php artisan test --coverage-html=storage/coverage-report
 
 ## System Design & Architecture
 
--   Limiting Resource (CPU/memory/time limits) based on Language : preventing abuse & maximizing con-current user request
--   ✅ Follows Domain-Driven Design (DDD) — feature-based module separation for enabling/disabling services, or subscription model
--   ✅ Real-time system with asynchronous processing by queue : accepting request from mass users at once, but execute one by one, enabling non-blocking users service
--   🔒 Sandboxing : Preventing sucspicious code to run
--   ✅ Uses Dockerized services to reflect production setup
--   ✅ CI/CD built-in from day 1
--   🧪 End-to-end simulation tests ensure contest flows are validated
+> **🎯 Main Goal:** Ensure **Scalability**, **Security**, and **Modularity**  
+> Designed for real-time code evaluation at scale — CI/CD-ready, easily deployable, and structured for maintainability.
+> Every commit makes sure the feature works.
 
-As, main goal of this design is - **Scalability**
+-   🧩 **Domain-Driven Design (DDD)** — feature-based modular structure supports toggling services (e.g., subscription model).
+-   ⚙️ **Resource Limiting per Language** (CPU, Memory, Time) — prevents abuse and maximizing con-current user code execution
+-   🕒 **Asynchronous Queue-Based Processing** — enables real-time non-blocking code execution for mass user submissions.
+-   🔒 **Sandbox Execution** — securely runs untrusted code inside isolated environments.
+-   🐳 **Dockerized Environment** — replicates production setup for local development, testing, and deployment.
+-   🚀 **CI/CD from Day 1** — GitHub Actions handles linting, tests, and deployments for continuous integration.
+-   🧪 **End-to-End Testing** — simulates full contest flows to ensure submission-to-verdict accuracy.
 
 ## 🛡️ Why it Stands Out -
 
