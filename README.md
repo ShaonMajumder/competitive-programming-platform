@@ -2,10 +2,9 @@
 
 ![Submission Screenshot](screenshots/submission-2025-05-19-04_39_24.png)
 
-![Tests](https://github.com/ShaonMajumder/competitive-programming-platform/actions/workflows/tests.yml/badge.svg)
-[![codecov](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform/branch/main/graph/badge.svg)](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform)
+![Laravel CI](https://github.com/ShaonMajumder/competitive-programming-platform/actions/workflows/laravel.yml/badge.svg)
 
-![Laravel CI](https://github.com/shaonmajumder/competitive-programming-platform/actions/workflows/laravel.yml/badge.svg)
+[![codecov](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform/branch/main/graph/badge.svg)](https://codecov.io/gh/ShaonMajumder/competitive-programming-platform)
 
 -   upcoming CI/CD demo
 -   upcoming UX demo
