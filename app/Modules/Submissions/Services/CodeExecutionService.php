@@ -3,7 +3,6 @@
 namespace App\Modules\Submissions\Services;
 
 use App\Modules\Submissions\Enums\SubmissionStatus;
-use App\Modules\Submissions\Models\Submission;
 use Illuminate\Support\Facades\Log;
 
 class CodeExecutionService
@@ -29,7 +28,7 @@ class CodeExecutionService
                 if ($compileExitCode !== 0) {
                     Log::warning("Compilation failed for submission ID {$submissionId}: " . implode("\n", $compileOutput));
                     return [
-                        'status' => SubmissionStatus::label(SubmissionStatus::COMPILATION_ERROR),
+                        'status' => SubmissionStatus::COMPILATION_ERROR,
                         'output' => implode("\n", $compileOutput),
                         'error'  => 'Compilation failed',
                     ];
@@ -62,7 +61,7 @@ class CodeExecutionService
             default:
                 Log::error("Unsupported language in execute(): $language");
                 return [
-                    'status' => SubmissionStatus::label(SubmissionStatus::FAILED),
+                    'status' => SubmissionStatus::FAILED,
                     'output' => '',
                     'error' => 'Unsupported language',
                 ];
@@ -71,7 +70,7 @@ class CodeExecutionService
         if ($exitCode === 0) {
             Log::info("Execution succeeded for submission ID {$submissionId}");
             return [
-                'status' => SubmissionStatus::label(SubmissionStatus::ACCEPTED),
+                'status' => SubmissionStatus::ACCEPTED,
                 'output' => implode("\n", $output),
                 'error' => null,
                 'limits' => compact('cpuLimit', 'memoryLimit', 'timeLimit')
@@ -79,7 +78,7 @@ class CodeExecutionService
         } else {
             Log::warning("Execution failed for submission ID {$submissionId} with exit code {$exitCode}: " . implode("\n", $output));
             return [
-                'status' => SubmissionStatus::label(SubmissionStatus::RUNTIME_ERROR),
+                'status' => SubmissionStatus::RUNTIME_ERROR,
                 'output' => implode("\n", $output),
                 'error' => 'Execution failed',
             ];

@@ -11,10 +11,17 @@ use App\Modules\Submissions\Enums\SubmissionStatus;
 use App\Modules\Submissions\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
-
+use App\Modules\Submissions\Helpers\ExecutionConfigHelper;
 
 class SubmissionController extends Controller
 {
+    protected ExecutionConfigHelper $configService;
+        
+    public function __construct(ExecutionConfigHelper $configService = null)
+    {
+        $this->configService = $configService ?? new ExecutionConfigHelper();
+    }
+
     public function create()
     {
         return view('submission::create');
@@ -43,28 +50,7 @@ class SubmissionController extends Controller
             'status' => SubmissionStatus::label($submission->status),
             'output' => $submission->output,
             'error' => $submission->error,
-            'limits' => $this->getConfig($submission->language)
+            'limits' => $this->configService->getLimits($submission->language)
         ]);
-    }
-
-    protected function getConfig(string $langName = null): array
-    {
-        $getConfigValue = function (string $key, $default) use ($langName) {
-            if ($langName) {
-                $value = config("submissions.judge.$langName.$key");
-                if ($value !== null) {
-                    return $value;
-                }
-            }
-
-            $value = config("submissions.judge.$key");
-            return $value !== null ? $value : $default;
-        };
-
-        return [
-            'cpu_limit' => $getConfigValue('cpu_limit', '0.5'),
-            'memory_limit' => $getConfigValue('memory_limit', '128m'),
-            'time_limit_seconds' => $getConfigValue('time_limit_seconds', 2),
-        ];
     }
 }

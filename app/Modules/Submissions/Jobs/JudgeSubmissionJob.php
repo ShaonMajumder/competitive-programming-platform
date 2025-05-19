@@ -11,6 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Log;
+use App\Modules\Submissions\Helpers\ExecutionConfigHelper;
 use Throwable;
 
 class JudgeSubmissionJob implements ShouldQueue
@@ -19,12 +20,13 @@ class JudgeSubmissionJob implements ShouldQueue
 
     protected string $submissionId;
     protected CodeExecutionService $executor;
-
-    public function __construct(string $submissionId, CodeExecutionService $executor = null)
+    protected ExecutionConfigHelper $configService;
+        
+    public function __construct(string $submissionId, CodeExecutionService $executor = null, ExecutionConfigHelper $configService = null)
     {
         $this->submissionId = $submissionId;
         $this->executor = $executor ?? new CodeExecutionService();
-
+        $this->configService = $configService ?? new ExecutionConfigHelper();
         Log::info("JudgeSubmissionJob created for submission ID: {$this->submissionId}");
     }
 
@@ -53,7 +55,7 @@ class JudgeSubmissionJob implements ShouldQueue
         Log::info("Code written to {$sourcePath}");
 
         try {
-            $limits = $this->getConfig($language);
+            $limits = $this->configService->getLimits($language);
             Log::info("Execution limits: " . json_encode($limits));
             $result = $this->executor->execute($language, $sourcePath, $submission->id, $limits );
             $limitsJson = json_encode($limits);
@@ -83,27 +85,6 @@ class JudgeSubmissionJob implements ShouldQueue
         }
 
         Log::info("Finished judging submission ID: {$this->submissionId}");
-    }
-
-    protected function getConfig(string $langName = null): array
-    {
-        $getConfigValue = function (string $key, $default) use ($langName) {
-            if ($langName) {
-                $value = config("submissions.judge.$langName.$key");
-                if ($value !== null) {
-                    return $value;
-                }
-            }
-
-            $value = config("submissions.judge.$key");
-            return $value !== null ? $value : $default;
-        };
-
-        return [
-            'cpu_limit' => $getConfigValue('cpu_limit', '0.5'),
-            'memory_limit' => $getConfigValue('memory_limit', '128m'),
-            'time_limit_seconds' => $getConfigValue('time_limit_seconds', 2),
-        ];
     }
 
     protected function getFileExtension(string $lang): string
