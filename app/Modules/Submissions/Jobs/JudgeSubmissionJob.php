@@ -52,7 +52,10 @@ class JudgeSubmissionJob implements ShouldQueue
         Log::info("Code written to {$sourcePath}");
 
         try {
-            $result = $this->executor->execute($language, $sourcePath, $submission->id);
+            $limits = $this->getConfig($language);
+            Log::info("Execution limits: " . json_encode($limits));
+            $result = $this->executor->execute($language, $sourcePath, $submission->id, $limits );
+            $limitsJson = json_encode($limits);
             Log::info("Execution result for submission ID {$this->submissionId}: status={$result['status']}");
 
             $submission->update([
@@ -61,7 +64,7 @@ class JudgeSubmissionJob implements ShouldQueue
                 'error'  => $result['error'],
             ]);
 
-            $this->cacheStatus($result['status'], $result['output'], $result['error']);
+            $this->cacheStatus($result['status'], $result['output'], $result['error'], $limitsJson);
         } catch (Throwable $e) {
             $message = "Internal error: " . $e->getMessage();
             Log::error("Exception in judging submission ID {$this->submissionId}: " . $e->__toString());
@@ -79,6 +82,27 @@ class JudgeSubmissionJob implements ShouldQueue
         }
 
         Log::info("Finished judging submission ID: {$this->submissionId}");
+    }
+
+    protected function getConfig(string $langName = null): array
+    {
+        $getConfigValue = function (string $key, $default) use ($langName) {
+            if ($langName) {
+                $value = config("submissions.judge.$langName.$key");
+                if ($value !== null) {
+                    return $value;
+                }
+            }
+
+            $value = config("submissions.judge.$key");
+            return $value !== null ? $value : $default;
+        };
+
+        return [
+            'cpu_limit' => $getConfigValue('cpu_limit', '0.5'),
+            'memory_limit' => $getConfigValue('memory_limit', '128m'),
+            'time_limit_seconds' => $getConfigValue('time_limit_seconds', 2),
+        ];
     }
 
     protected function getFileExtension(string $lang): string
@@ -99,12 +123,13 @@ class JudgeSubmissionJob implements ShouldQueue
         }
     }
 
-    protected function cacheStatus(string $status, ?string $output = null, ?string $error = null): void
+    protected function cacheStatus(string $status, ?string $output = null, ?string $error = null, ?string $limits = null): void
     {
         Redis::setex("submission_status_{$this->submissionId}", 3600, json_encode([
             'status' => $status,
             'output' => $output,
             'error' => $error,
+            'limits' => $limits
         ]));
         Log::info("Cached submission status for ID {$this->submissionId}: {$status}");
     }

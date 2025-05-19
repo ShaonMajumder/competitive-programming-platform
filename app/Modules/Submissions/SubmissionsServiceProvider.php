@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\Route;
 
 class SubmissionsServiceProvider extends ServiceProvider
 {
+    public function register()
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/config/judge.php',
+            'submissions.judge'
+        );        
+    }
+
     /**
      * Bootstrap any application services.
      */

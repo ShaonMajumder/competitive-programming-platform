@@ -7,8 +7,13 @@ use Illuminate\Support\Facades\Log;
 
 class CodeExecutionService
 {
-    public function execute(string $language, string $sourcePath, string $submissionId): array
+    public function execute(string $language, string $sourcePath, string $submissionId, array $limits = []): array
     {
+        $cpuLimit = $limits['cpu_limit'] ?? 2; // seconds
+        $memoryLimit = $limits['memory_limit'] ?? '128m'; // 128MB
+        $memoryLimitBytes = $this->convertMemoryToBytes($memoryLimit);
+        $timeLimit = $limits['time_limit_seconds'] ?? 2;
+
         $output = [];
         $exitCode = 1;
 
@@ -16,6 +21,7 @@ class CodeExecutionService
 
         switch ($language) {
             case 'cpp':
+                // $exeName = "code_{$submissionId}_exe";
                 $exePath = storage_path("app/code_{$submissionId}_exe");
                 exec("g++ $sourcePath -o $exePath 2>&1", $compileOutput, $compileExitCode);
 
@@ -28,32 +34,32 @@ class CodeExecutionService
                     ];
                 }
 
-                exec("$exePath 2>&1", $output, $exitCode);
+                $cmd = sprintf(
+                    'timeout %ds firejail --quiet --private --net=none --rlimit-as=%d --rlimit-cpu=%d %s 2>&1',
+                    $timeLimit,
+                    $memoryLimitBytes,
+                    $cpuLimit,
+                    escapeshellarg($exePath)
+                );
+
+                exec($cmd, $output, $exitCode);
                 @unlink($exePath);
                 break;
 
             case 'python':
-                exec("python3 $sourcePath 2>&1", $output, $exitCode);
-                break;
+                $cmd = sprintf(
+                    'timeout %ds firejail --quiet --private --net=none --rlimit-as=%d --rlimit-cpu=%d python3 %s 2>&1',
+                    $timeLimit,
+                    $memoryLimitBytes,
+                    $cpuLimit,
+                    escapeshellarg($sourcePath)
+                );
 
-            case 'php':
-                exec("php $sourcePath 2>&1", $output, $exitCode);
-                break;
-
-            case 'java':
-                Log::warning("Java execution not implemented for submission ID {$submissionId}");
-                return [
-                    'status' => SubmissionStatus::FAILED,
-                    'output' => '',
-                    'error' => 'Java execution not implemented',
-                ];
-
-            case 'js':
-                exec("node $sourcePath 2>&1", $output, $exitCode);
+                exec($cmd, $output, $exitCode);
                 break;
 
             default:
-                Log::error("Unsupported language in executeCode(): $language");
+                Log::error("Unsupported language in execute(): $language");
                 return [
                     'status' => SubmissionStatus::FAILED,
                     'output' => '',
@@ -67,6 +73,7 @@ class CodeExecutionService
                 'status' => SubmissionStatus::ACCEPTED,
                 'output' => implode("\n", $output),
                 'error' => null,
+                'limits' => compact('cpuLimit', 'memoryLimit', 'timeLimit')
             ];
         } else {
             Log::warning("Execution failed for submission ID {$submissionId} with exit code {$exitCode}: " . implode("\n", $output));
@@ -76,5 +83,14 @@ class CodeExecutionService
                 'error' => 'Execution failed',
             ];
         }
+    }
+
+    private function convertMemoryToBytes(string $memory): int
+    {
+        $units = ['k' => 1024, 'm' => 1048576, 'g' => 1073741824];
+        $unit = strtolower(substr($memory, -1));
+        $value = (int) $memory;
+
+        return $units[$unit] * $value ?? 134217728; // fallback 128MB
     }
 }

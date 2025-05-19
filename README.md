@@ -103,14 +103,15 @@ php artisan test --coverage-html=storage/coverage-report
 
 ---
 
-## 🛡️ Engineering Best Practices
+## 🛡️ Why It Stands Out - Engineering Best Practices
 
 -   ✅ Follows Domain-Driven Design (DDD) — feature-based module separation
--   ✅ CI-ready with GitHub Actions integration (works with every push) : CD pending
+-   ✅ Real-time system with asynchronous processing - Scalable queue-based design
+-   Language Resource limits to prevent abuse & balance load (CPU/memory/time limits)
 -   ✅ Uses Dockerized services to reflect production setup
+-   ✅ CI/CD built-in from the ground up
 -   🔒 Plans to integrate secure sandbox execution (Docker-based)
 -   🧪 End-to-end simulation tests ensure contest flows are validated
--   Docker-based infrastructure mimics production closely
 
 ## 🧠 Development Notes (WIP)
 
@@ -143,6 +144,8 @@ php artisan test --coverage-html=storage/coverage-report
 
 ## 👨‍💻 Built & Maintained By
 
+👔 Ready to join a team building high-impact systems
+📨 Let’s connect for backend, DevOps, or system design roles
 **Shaon Majumder**  
 Senior Software Engineer  
 Open source contributor | Laravel ecosystem expert | System design advocate  

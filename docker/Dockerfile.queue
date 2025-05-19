@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     g++ \
+    firejail \
     && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip
 
 RUN pecl install redis && docker-php-ext-enable redis
