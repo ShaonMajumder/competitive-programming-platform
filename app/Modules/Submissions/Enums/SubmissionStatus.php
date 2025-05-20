@@ -13,6 +13,7 @@ final class SubmissionStatus
     public const COMPILATION_ERROR = 6;
     public const FAILED = 7;
     public const EXECUTED = 8;
+    public const TIMEOUT_ERROR = 9;
 
     private static array $labels = [
         self::QUEUED => 'Queued',
@@ -24,6 +25,7 @@ final class SubmissionStatus
         self::COMPILATION_ERROR => 'Compilation Error',
         self::FAILED => 'Failed',
         self::EXECUTED => 'Executed',
+        self::TIMEOUT_ERROR => 'Timeout Error',
     ];
 
     /**

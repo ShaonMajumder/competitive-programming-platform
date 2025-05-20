@@ -51,6 +51,21 @@ class CodeExecutionService
                 $fileName = basename($sourcePath);
             
                 // bwrap command to isolate the script from the Laravel app and .env
+                // $cmd = sprintf(
+                //     'timeout %ds bwrap ' .
+                //     '--ro-bind /usr /usr ' .
+                //     '--ro-bind /lib /lib ' .
+                //     '--ro-bind /lib64 /lib64 ' .
+                //     '--ro-bind /bin /bin ' .
+                //     '--ro-bind /tmp /tmp ' .
+                //     '--dev /dev ' .
+                //     '--bind %s /app ' .
+                //     '--chdir /app ' .
+                //     'python3 %s 2>&1',
+                //     $timeLimit,
+                //     escapeshellarg($workDir),
+                //     escapeshellarg($fileName)
+                // );
                 $cmd = sprintf(
                     'timeout %ds bwrap ' .
                     '--ro-bind /usr /usr ' .
@@ -59,11 +74,19 @@ class CodeExecutionService
                     '--ro-bind /bin /bin ' .
                     '--ro-bind /tmp /tmp ' .
                     '--dev /dev ' .
-                    '--bind %s /app ' .
+                    '--bind %s /app ' .        // Bind only the working dir (script)
                     '--chdir /app ' .
+                    '--unshare-net ' .         // Disable network
+                    '--die-with-parent ' .     // Ensure bwrap dies with Laravel process
+                    '--new-session ' .         // New session, isolates signals
+                    '--hostname sandbox ' .    // Mask host identity
+                    'ulimit -v %d; ' .         // Limit virtual memory
+                    'ulimit -t %d; ' .         // Limit CPU time in seconds
                     'python3 %s 2>&1',
                     $timeLimit,
                     escapeshellarg($workDir),
+                    $memoryLimitBytes / 1024,  // Convert to KB
+                    $cpuLimit,
                     escapeshellarg($fileName)
                 );
                 // $cmd = "python3 $sourcePath 2>&1";
@@ -79,6 +102,7 @@ class CodeExecutionService
                 ];
         }
 
+        Log::info("Execution code: $exitCode");
         if ($exitCode === 0) {
             Log::info("Execution succeeded for submission ID {$submissionId}");
             return [
@@ -93,6 +117,7 @@ class CodeExecutionService
                 'status' => SubmissionStatus::RUNTIME_ERROR,
                 'output' => implode("\n", $output),
                 'error' => 'Execution failed',
+                'limits' => compact('cpuLimit', 'memoryLimit', 'timeLimit')
             ];
         }
     }

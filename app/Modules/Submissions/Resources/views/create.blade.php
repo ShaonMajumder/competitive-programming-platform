@@ -133,7 +133,21 @@ document.getElementById('submission-form').addEventListener('submit', async func
         if (statusData.status === 'Queued' || statusData.status === 'Running') {
             setTimeout(pollStatus, 2000);
         } else {
-            const output = statusData.output || 'No output.';
+            var output = '';
+            if (statusData.status === 'Executed') {
+                output = `${statusData.status}: ${statusData.output}` || 'No output.';
+            } else if (statusData.status === 'Runtime Error') {
+                output = `${statusData.status}: ${statusData.error}` || 'No output.';
+            } else if (statusData.status === 'Compilation Error') {
+                output = `${statusData.status}: ${statusData.error}` || 'No output.';
+            } else if (statusData.status === 'Wrong Answer') {
+                output = `${statusData.status}: ${statusData.error}` || 'No output.';
+            } else if (statusData.status === 'Accepted') {
+                output = `${statusData.status}: ${statusData.output}` || 'No output.';
+            } else {
+                output = `Unknown Status: ${statusData.status}` || 'No output.';
+            }
+            
             const limits = statusData.limits || {};
             const limitsText = `\n\n=== Resource Limits ===\nCPU Limit: ${limits.cpu_limit}\nMemory Limit: ${limits.memory_limit}\nTime Limit: ${limits.time_limit_seconds}s`;
             
